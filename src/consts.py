@@ -10,5 +10,7 @@ stixs = [
     "malware",
     "tool",
     "campaign",
-    "relationship"   
+    "relationship",
+    "domain-name",
+    "intrusion-set"
 ]

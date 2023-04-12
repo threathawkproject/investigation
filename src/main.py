@@ -30,17 +30,15 @@ async def root():
 # This makes the stix file to store our all SDOs, SCOs, and SROs. 
 # This is file is to be used by the STIX Environment layer 
 @app.post("/create_investigation")
-async def createInvestigation(data: CreateInvestigation):    
+async def create_investigation(data: CreateInvestigation):    
     try:
         investigation_data = utils.create_investigation(data)
-        print(investigation_data)
         if investigation_data is not None:
             return investigation_data
         else:
             raise HTTPException(400, detail="could not create investigation")
     except Exception as e:
         raise HTTPException(500, detail=str(e))
-
 
 """
 This will take the ioc and the list of analyzers to run
@@ -51,7 +49,7 @@ async def investigate(investigate_request: InvestigateRequest):
     if investigated:
         return Response(status_code=204)
     else:
-        raise HTTPException(500, detail=error)
+        raise HTTPException(500, detail=str(error))
 
 @app.post("/display")
 async def display_investigation(investigation: Investigation):
@@ -59,4 +57,4 @@ async def display_investigation(investigation: Investigation):
         data = utils.display_investigation(investigation)
         return Response(status_code=200, content=data)
     except Exception as e:
-        raise HTTPException(500, detail=e)
+        raise HTTPException(500, detail=str(e))
