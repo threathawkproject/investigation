@@ -71,7 +71,7 @@ def preform_investigation(investigate_request: InvestigateRequest):
         response.raise_for_status()
         data = response.json()
         stix_sink = FileSystemSink(file_path, allow_custom=True, bundlify=True)
-        stix_source = FileSystemSource(file_path, allow_custom=True, bundlify=True)
+        stix_source = FileSystemSource(file_path, allow_custom=True)
         env = Environment(source=stix_source,sink=stix_sink)
         for analyzer in investigate_request.enrichment["selected_analyzers"]:            
             sdos = data[analyzer]
