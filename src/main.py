@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 import meilisearch
 import utils
+import consts
 from models.models import Investigation, InvestigateRequest, CreateInvestigation
 
 
@@ -56,5 +57,15 @@ async def display_investigation(investigation: Investigation):
     try:
         data = utils.display_investigation(investigation)
         return Response(status_code=200, content=data)
+    except Exception as e:
+        raise HTTPException(500, detail=str(e))
+
+
+
+@app.get("/get_all_stix_types")
+async def get_all_stix_types():
+    try:
+        stix_types = consts.stixs
+        return stix_types
     except Exception as e:
         raise HTTPException(500, detail=str(e))

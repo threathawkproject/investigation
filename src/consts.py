@@ -12,5 +12,6 @@ stixs = [
     "campaign",
     "relationship",
     "domain-name",
-    "intrusion-set"
+    "intrusion-set",
+    "email"
 ]
