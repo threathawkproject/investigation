@@ -93,7 +93,7 @@ def display_investigation(investigation: Investigation):
     stix_source = FileSystemSource(investigation.file_path, allow_custom=True)
     env = Environment(source=stix_source)
     objects = []
-    for stix in consts.stixs:
+    for stix in consts.stix_types:
         object_filter = Filter('type', '=', stix)
         results = env.query(object_filter)
         if len(results) > 0:
