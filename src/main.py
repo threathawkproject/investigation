@@ -62,10 +62,10 @@ async def display_investigation(investigation: Investigation):
 
 
 
-@app.get("/get_all_stix_types")
+@app.get("/get_investigation_types")
 async def get_all_stix_types():
     try:
-        stix_types = consts.stixs
+        stix_types = consts.investigation_types
         return stix_types
     except Exception as e:
         raise HTTPException(500, detail=str(e))
