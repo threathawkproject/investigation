@@ -2,12 +2,11 @@ import requests
 import os
 from stix2 import Environment, FileSystemSource, FileSystemSink, Filter
 from stix2 import Bundle
-from stix2.exceptions import DuplicateRegistrationError
 import json
 import nanoid
 import consts
 
-from models.models import Investigation, InvestigateRequest, CreateInvestigation
+from models.models import Investigation, InvestigateRequest, CreateInvestigation, SaveInvestigation
 
 
 # generating a new nanoid
@@ -31,7 +30,8 @@ def create_investigation(data: CreateInvestigation):
     nano_id = generate_nanoid()
     file_path = f"./data/{nano_id}"
     try:
-        URL = f"{consts.ENCODING_URL}/generate_sdo"
+        ENCODING_URL = os.getenv('ENCODING_URL', default="http://localhost:8081")
+        URL = f"{ENCODING_URL}/generate_sdo"
         print(data)
         data_to_send = {
             "type": data.type,
@@ -45,6 +45,9 @@ def create_investigation(data: CreateInvestigation):
             json=data_to_send
         )
         root_node = json.loads(response.json())
+
+        print(type(root_node))
+        print(root_node)
 
         os.mkdir(file_path)
         stix_sink = FileSystemSink(file_path, allow_custom=True, bundlify=True)
@@ -62,7 +65,8 @@ def create_investigation(data: CreateInvestigation):
 
 def preform_investigation(investigate_request: InvestigateRequest):
     file_path = investigate_request.file_path
-    URL = f"{consts.ENRICHMENT_URL}/analyze"
+    ENRICHMENT_URL = os.getenv('ENRICHMENT_URL', default="http://localhost:8080")
+    URL = f"{ENRICHMENT_URL}/analyze"
     try:
         response = requests.post(
             url=URL,
@@ -100,3 +104,7 @@ def display_investigation(investigation: Investigation):
             objects.extend(results)
     bundle = Bundle(objects=objects, allow_custom=True)
     return bundle.serialize()
+
+
+def save_investigation(client, investigation_data):
+    pass

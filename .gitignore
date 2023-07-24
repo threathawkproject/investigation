@@ -5,3 +5,5 @@ pyvenv.cfg
 /src/*.http
 /src/test.py
 /src/data
+
+__pycache__/

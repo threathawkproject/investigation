@@ -12,3 +12,8 @@ class InvestigateRequest(BaseModel):
 
 class Investigation(BaseModel):
     file_path: str
+
+class SaveInvestigation(BaseModel):
+    investigation_id: str
+    name_of_investigation: str
+    data: dict

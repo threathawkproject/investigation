@@ -6,9 +6,13 @@ import utils
 import consts
 from models.models import Investigation, InvestigateRequest, CreateInvestigation
 
+import os
+
+
+MEILI_URL = os.getenv("MEILI_URL", default="http://localhost:7700")
 
 # Initialize the Meiisearch client
-client = meilisearch.Client('http://localhost:7700')
+client = meilisearch.Client(MEILI_URL)
 client.create_index('investigations', {'primaryKey': 'id'})
 
 
@@ -60,8 +64,6 @@ async def display_investigation(investigation: Investigation):
     except Exception as e:
         raise HTTPException(500, detail=str(e))
 
-
-
 @app.get("/get_investigation_types")
 async def get_all_stix_types():
     try:
@@ -69,3 +71,9 @@ async def get_all_stix_types():
         return stix_types
     except Exception as e:
         raise HTTPException(500, detail=str(e))
+    
+
+
+@app.post("save_investigation")
+async def save_investigation(investigation_form):
+    pass
