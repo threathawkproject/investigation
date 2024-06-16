@@ -65,7 +65,7 @@ def create_investigation(data: CreateInvestigation):
 
 def preform_investigation(investigate_request: InvestigateRequest):
     file_path = investigate_request.file_path
-    ENRICHMENT_URL = os.getenv('ENRICHMENT_URL', default="http://localhost:8080")
+    ENRICHMENT_URL = os.getenv('ENRICHMENT_URL', default="http://localhost:8000")
     URL = f"{ENRICHMENT_URL}/analyze"
     try:
         response = requests.post(
