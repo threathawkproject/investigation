@@ -10,6 +10,9 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
+# Create the data directory (Check logs if investigation fails)
+RUN mkdir -p /threat-hawk-investigation/data
+
 WORKDIR /threat-hawk-investigation/src
 
 CMD ["uvicorn", "main:app", "--host=0.0.0.0"]
