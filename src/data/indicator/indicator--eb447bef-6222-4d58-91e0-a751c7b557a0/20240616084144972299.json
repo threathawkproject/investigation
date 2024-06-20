@@ -1,0 +1,24 @@
+{
+    "type": "bundle",
+    "id": "bundle--88cd7340-890e-4d06-9ef1-74dcd0d0f96f",
+    "objects": [
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--eb447bef-6222-4d58-91e0-a751c7b557a0",
+            "created": "2024-06-16T08:41:44.972299Z",
+            "modified": "2024-06-16T08:41:44.972299Z",
+            "name": "192.168.1.1",
+            "pattern": "[ip-addr:value = '192.168.1.1']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2024-06-16T08:41:44.972299Z",
+            "extensions": {
+                "extension-definition--dd73de4f-a7f3-49ea-8ec1-8e884196b7a8": {
+                    "extension_type": "toplevel-property-extension"
+                }
+            },
+            "node_type": "ip"
+        }
+    ]
+}
