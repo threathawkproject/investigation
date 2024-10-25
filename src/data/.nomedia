@@ -1,0 +1,1 @@
+this file exists just so that the investigation module does not crap out when it sees that the dockerfile did not make the data dir in /src
