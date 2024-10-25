@@ -30,7 +30,7 @@ def create_investigation(data: CreateInvestigation):
     nano_id = generate_nanoid()
     file_path = f"./data/{nano_id}"
     try:
-        ENCODING_URL = os.getenv('ENCODING_URL', default="http://localhost:8081")
+        ENCODING_URL = os.getenv('ENCODING_URL', default="http://localhost:8001")
         URL = f"{ENCODING_URL}/generate_sdo"
         print(data)
         data_to_send = {
