@@ -6,7 +6,7 @@ services:
     environment:
       - MEILI_URL=http://threat-hawk-meilisearch:7700
       - ENRICHMENT_URL=http://threat-hawk-enrichment:8000
-      - ENCODING_URL=http://threat-hawk-encoding:8000
+      - ENCODING_URL=http://threat-hawk-encoding:8001
     restart: always
     ports:
       - "8002:8000"
