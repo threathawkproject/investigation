@@ -1,7 +1,7 @@
 NANOID_CHARSET = "0123456789abcdefghij"
 NANOID_LENGTH = 4
 ENRICHMENT_URL = "http://localhost:8000"
-ENCODING_URL = "http://localhost:8081"
+ENCODING_URL = "http://localhost:8001"
 stix_types = [
     "indicator",
     "attack-pattern",
